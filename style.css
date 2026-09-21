@@ -1,0 +1,652 @@
+/* ============================================================
+   HAILEY'S LIBRARY — STYLE.CSS
+   ============================================================
+   STAGE 5 of 5: discoveries, accessibility & final polish.
+
+   Stages 1–4 built the structure, the look, the interactions,
+   and the media. This last stage adds the small discovery toast,
+   fixes a couple of low-contrast text/background pairs so
+   everything reads clearly, and makes small tap targets (close
+   buttons, prev/next, mute) easier to hit on a phone.
+   ============================================================ */
+
+/* ---------- 1. DESIGN TOKENS ---------- */
+:root {
+  /* colors */
+  --color-ink: #2B2420;          /* main text */
+  --color-ink-soft: #5B5148;     /* secondary text */
+  --color-paper: #E7DDC8;        /* page / room background */
+  --color-paper-light: #F1E9DA;  /* cards, panels */
+  --color-wood: #5B3A29;         /* shelves, buttons */
+  --color-wood-dark: #402A1E;
+  --color-brass: #A8823D;        /* accents, labels */
+  --color-brass-light: #D4B679;  /* brass-toned text on dark backgrounds — passes contrast where --color-brass alone would not */
+  --color-ink-on-brass: #241A11; /* text sitting on a brass background — darker than --color-wood-dark for contrast */
+  --color-rosewood: #8C4F49;     /* the "Us Room", subtle romance */
+  --color-green: #3F5439;        /* plants, small accents */
+  --color-slate: #3C4A5C;        /* book-cover variety */
+  --color-plum: #5B3A52;         /* book-cover variety */
+  --color-focus: #2E6E8E;        /* visible keyboard focus */
+
+  /* type */
+  --font-display: 'Fraunces', Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+  --font-body: 'Literata', Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+
+  /* layout */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --radius: 10px;
+  --max-width: 640px;
+}
+
+/* ---------- 2. RESET ---------- */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; height: 100%; }
+body {
+  font-family: var(--font-body);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, p { margin: 0; }
+button { font-family: inherit; cursor: pointer; }
+img { max-width: 100%; display: block; }
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---------- 3. VIEW SWITCHING ---------- */
+.view { width: 100%; }
+[hidden] { display: none !important; }
+
+/* ---------- 4. ENTRANCE ---------- */
+.view-entrance {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-wood-dark);
+  color: var(--color-paper-light);
+  text-align: center;
+  padding: var(--space-3);
+}
+.entrance-scene {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: var(--space-2);
+}
+.entrance-svg { width: 100%; height: auto; display: block; }
+.entrance-content { max-width: 420px; }
+.entrance-eyebrow {
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  color: var(--color-brass-light);
+  margin-bottom: var(--space-2);
+}
+.entrance-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 2.6rem;
+  line-height: 1.15;
+  margin-bottom: var(--space-2);
+}
+.entrance-subtitle {
+  font-size: 1rem;
+  color: var(--color-paper);
+  opacity: 0.8;
+  margin-bottom: var(--space-4);
+}
+.btn-enter {
+  background: var(--color-brass);
+  color: var(--color-ink-on-brass);
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.9rem 1.8rem;
+  font-size: 1rem;
+  font-family: var(--font-display);
+  transition: filter 0.15s ease;
+}
+.btn-enter:hover { filter: brightness(1.08); }
+
+/* ---------- 5. APP SHELL / ROOMS ---------- */
+.app { max-width: var(--max-width); margin: 0 auto; padding: var(--space-2); }
+.view-room { padding-bottom: var(--space-4); }
+
+.room-illustration {
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: var(--space-2);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+  line-height: 0; /* remove inline-svg whitespace gap */
+}
+.room-svg { width: 100%; height: auto; display: block; }
+
+.room-header { padding: var(--space-1) 0 var(--space-2); }
+.room-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.9rem;
+  color: var(--color-wood-dark);
+}
+.room-tagline {
+  color: var(--color-ink-soft);
+  font-size: 0.95rem;
+  margin-top: 0.25rem;
+}
+.door-button-back {
+  background: none;
+  border: none;
+  color: var(--color-rosewood);
+  font-size: 0.95rem;
+  padding: 0.5rem 0;
+  margin-bottom: var(--space-1);
+  min-height: 44px;
+}
+
+/* ---------- 6. LIBRARY FEATURES ROW (book / librarian / music) ---------- */
+.library-features {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: var(--space-3);
+}
+.feature-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--color-paper-light);
+  border: 1px solid rgba(43, 36, 32, 0.1);
+  border-radius: var(--radius);
+  padding: 0.7rem 0.4rem 0.6rem;
+  transition: transform 0.12s ease;
+}
+.feature-card:hover { transform: translateY(-2px); }
+.feature-icon { width: 32px; height: 32px; }
+.feature-label {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  color: var(--color-ink);
+  text-align: center;
+}
+
+/* ---------- 7. SHELVES (styled as wooden shelves holding books) ---------- */
+.shelves-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin: var(--space-2) 0;
+}
+.shelf {
+  background: linear-gradient(180deg, var(--color-wood) 0%, var(--color-wood-dark) 100%);
+  border-radius: 10px;
+  padding: 0 0 10px;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.12), 0 10px 16px rgba(0, 0, 0, 0.22);
+}
+.shelf-header {
+  display: block;
+  width: 100%;
+  padding: 0.85rem 1rem 0.7rem;
+  text-align: left;
+}
+.shelf-name {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--color-paper-light);
+}
+.shelf-icon { margin-right: 0.4rem; }
+.shelf-description {
+  color: rgba(241, 233, 218, 0.85);
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+.shelf-letters {
+  list-style: none;
+  margin: 0;
+  padding: 0 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* each letter looks like a small book cover sitting on the shelf */
+.letter-button {
+  --cover-color: var(--color-brass);
+  width: 100%;
+  text-align: left;
+  background: var(--color-paper-light);
+  border: none;
+  border-left: 5px solid var(--cover-color);
+  border-radius: 3px 8px 8px 3px;
+  padding: 0.75rem 0.9rem;
+  font-size: 0.92rem;
+  color: var(--color-ink);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.letter-button:hover {
+  transform: translateX(2px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+.letter-button.cover-0 { --cover-color: var(--color-brass); }
+.letter-button.cover-1 { --cover-color: var(--color-rosewood); }
+.letter-button.cover-2 { --cover-color: var(--color-green); }
+.letter-button.cover-3 { --cover-color: var(--color-slate); }
+.letter-button.cover-4 { --cover-color: var(--color-plum); }
+.letter-button.cover-5 { --cover-color: var(--color-wood); }
+
+/* ---------- 8. DOORS BETWEEN AREAS ---------- */
+.room-doors { display: flex; gap: var(--space-2); margin-top: var(--space-3); }
+.door-button {
+  flex: 1;
+  background: var(--color-wood);
+  color: var(--color-paper-light);
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.9rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  transition: background 0.12s ease;
+}
+.door-button:hover { background: var(--color-wood-dark); }
+
+.creator-plaque {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  margin-top: var(--space-4);
+  padding: 0.6rem;
+  text-align: center;
+  font-family: inherit;
+  font-size: 0.78rem;
+  color: var(--color-ink-soft);
+  opacity: 0.7;
+  transition: opacity 0.15s ease;
+}
+.creator-plaque:hover { opacity: 1; }
+
+/* ---------- 9. READING ROOM ---------- */
+.reading-room-container { display: flex; flex-direction: column; gap: 0.7rem; }
+
+/* ---------- 10. GALLERY ---------- */
+.gallery-container { display: flex; flex-direction: column; gap: var(--space-3); }
+.gallery-category h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--color-wood-dark);
+  margin-bottom: 0.5rem;
+}
+.gallery-empty {
+  color: var(--color-ink-soft);
+  font-size: 0.9rem;
+  font-style: italic;
+  text-align: center;
+  border: 1.5px dashed var(--color-brass);
+  border-radius: var(--radius);
+  padding: var(--space-3) var(--space-2);
+  background: var(--color-paper-light);
+}
+.gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
+.gallery-frame {
+  background: var(--color-paper-light);
+  border: 6px solid var(--color-brass);
+  border-radius: 2px;
+  padding: 0.4rem;
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.gallery-frame:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
+}
+.gallery-frame img {
+  border-radius: 2px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+.gallery-caption { font-size: 0.82rem; color: var(--color-ink-soft); margin-top: 0.3rem; }
+
+/* ---------- 11. MODALS ---------- */
+.modal { position: fixed; inset: 0; display: flex; align-items: flex-end; justify-content: center; z-index: 100; }
+.modal-backdrop { position: absolute; inset: 0; background: rgba(20, 15, 10, 0.55); }
+.modal-panel {
+  position: relative;
+  width: 100%;
+  max-width: var(--max-width);
+  max-height: 85vh;
+  overflow-y: auto;
+  background: var(--color-paper-light);
+  border-radius: 18px 18px 0 0;
+  padding: var(--space-3);
+  animation: modal-rise 0.25s ease-out;
+}
+.modal-panel:focus { outline: none; }
+@media (min-width: 640px) {
+  .modal { align-items: center; }
+  .modal-panel { border-radius: 18px; }
+}
+@keyframes modal-rise {
+  from { transform: translateY(24px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.modal-close {
+  position: absolute;
+  top: var(--space-1);
+  right: var(--space-1);
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  color: var(--color-ink-soft);
+  line-height: 1;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* ---------- 12. LETTER READING EXPERIENCE ---------- */
+.letter-panel { padding-top: var(--space-4); }
+.letter-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.4rem;
+  color: var(--color-wood-dark);
+  margin-bottom: var(--space-2);
+  padding-right: var(--space-3);
+}
+.letter-image-wrap { margin-bottom: var(--space-2); }
+.letter-image { border-radius: 8px; }
+.letter-message {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--color-ink);
+  white-space: pre-wrap;
+}
+.letter-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--space-3);
+  padding-top: var(--space-2);
+  border-top: 1px solid rgba(43, 36, 32, 0.12);
+}
+.letter-nav-btn {
+  background: none;
+  border: none;
+  color: var(--color-rosewood);
+  font-size: 0.9rem;
+  padding: 0.6rem 0.4rem;
+  min-height: 44px;
+}
+.letter-nav-btn:disabled { opacity: 0.35; cursor: default; }
+
+/* ---------- 13. LIBRARIAN PANEL ---------- */
+.librarian-text { font-size: 1.05rem; margin-bottom: var(--space-2); padding-right: var(--space-3); }
+.librarian-prompts { display: flex; flex-direction: column; gap: 0.5rem; }
+.librarian-prompt-btn {
+  text-align: left;
+  background: var(--color-paper);
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.92rem;
+}
+
+/* ---------- 14. MUSIC PANEL ---------- */
+.music-empty {
+  color: var(--color-ink-soft);
+  font-style: italic;
+  text-align: center;
+  padding: var(--space-3) 0;
+}
+.music-player-ui { text-align: center; padding-top: var(--space-1); }
+.music-track-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: var(--color-wood-dark);
+}
+.music-track-artist { color: var(--color-ink-soft); font-size: 0.9rem; margin-top: 0.2rem; }
+
+.music-mood-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+  margin: var(--space-2) 0;
+}
+.music-chip {
+  background: var(--color-paper);
+  border: 1px solid rgba(43, 36, 32, 0.15);
+  border-radius: 999px;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.8rem;
+  color: var(--color-ink-soft);
+}
+.music-chip-active {
+  background: var(--color-brass);
+  color: var(--color-ink-on-brass);
+  border-color: var(--color-brass);
+}
+
+.music-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  margin: var(--space-3) 0;
+}
+.music-control-btn {
+  background: var(--color-paper);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 1.1rem;
+  color: var(--color-ink);
+}
+.music-control-btn-main {
+  width: 56px;
+  height: 56px;
+  background: var(--color-brass);
+  font-size: 1.25rem;
+  color: var(--color-ink-on-brass);
+}
+
+.music-volume-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  max-width: 260px;
+  margin: 0 auto;
+}
+.music-mute-btn {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.music-volume-slider { flex: 1; accent-color: var(--color-brass); }
+.music-error { color: var(--color-rosewood); font-size: 0.85rem; margin-top: var(--space-2); }
+
+/* a quiet pulse on the Main Library music icon while a song is playing */
+#btn-music-player.music-playing {
+  animation: music-pulse 1.8s ease-in-out infinite;
+}
+@keyframes music-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(63, 84, 57, 0.35); }
+  50% { box-shadow: 0 0 0 6px rgba(63, 84, 57, 0); }
+}
+
+/* ---------- 15. ENLARGED PHOTO ---------- */
+.photo-panel { padding-top: var(--space-4); text-align: center; }
+.photo-image {
+  border-radius: 8px;
+  margin: 0 auto var(--space-2);
+  max-height: 62vh;
+  width: auto;
+  max-width: 100%;
+}
+.photo-caption { color: var(--color-ink-soft); font-size: 0.95rem; }
+
+/* ---------- 16. TAPPABLE OBJECTS (lamp, plant) ---------- */
+.tappable-object { cursor: pointer; }
+.tappable-object:hover { filter: brightness(1.12); }
+.tappable-object:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+/* lamps: glow pulses gently on its own, and turns off when tapped */
+.lamp-glow-circle {
+  animation: lamp-idle-pulse 3.4s ease-in-out infinite;
+  transition: opacity 0.3s ease;
+}
+.lamp-group.lamp-off .lamp-glow-circle {
+  opacity: 0;
+  animation: none;
+}
+@keyframes lamp-idle-pulse {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1; }
+}
+
+/* plant: a small one-off wobble when tapped (shared with other "nudge" objects) */
+.object-nudged {
+  transform-box: fill-box;
+  transform-origin: bottom center;
+  animation: object-sway 0.6s ease-in-out;
+}
+@keyframes object-sway {
+  0% { transform: rotate(0); }
+  25% { transform: rotate(-4deg); }
+  55% { transform: rotate(3deg); }
+  100% { transform: rotate(0); }
+}
+
+/* ---------- 17. AMBIENT ROOM ANIMATION (always on, very subtle) ---------- */
+.curtain {
+  transform-box: fill-box;
+  transform-origin: top center;
+  animation: curtain-sway 6s ease-in-out infinite;
+}
+.curtain-right { animation-delay: 0.6s; }
+@keyframes curtain-sway {
+  0%, 100% { transform: rotate(-1deg); }
+  50% { transform: rotate(1deg); }
+}
+
+.dust-mote { animation: dust-float 7s ease-in-out infinite; }
+.dust-mote-2 { animation-delay: 1.4s; }
+.dust-mote-3 { animation-delay: 2.8s; }
+.dust-mote-4 { animation-delay: 4.2s; }
+@keyframes dust-float {
+  0% { transform: translate(0, 0); opacity: 0.3; }
+  50% { transform: translate(3px, -10px); opacity: 0.7; }
+  100% { transform: translate(-2px, -20px); opacity: 0; }
+}
+
+.rain-line { animation: rain-flicker 1.6s ease-in-out infinite; }
+.rain-line:nth-of-type(2) { animation-delay: 0.3s; }
+.rain-line:nth-of-type(3) { animation-delay: 0.6s; }
+.rain-line:nth-of-type(4) { animation-delay: 0.9s; }
+@keyframes rain-flicker {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.75; }
+}
+
+.spotlight-glow { animation: spotlight-breathe 5s ease-in-out infinite; }
+.spotlight-glow:nth-of-type(2) { animation-delay: 1s; }
+.spotlight-glow:nth-of-type(3) { animation-delay: 2s; }
+@keyframes spotlight-breathe {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1; }
+}
+
+/* ---------- 18. BOOK WIGGLE (letters + the special book, right before opening) ---------- */
+.wiggling { animation: book-wiggle 0.28s ease-in-out; }
+@keyframes book-wiggle {
+  0% { transform: translateX(0) rotate(0); }
+  30% { transform: translateX(-3px) rotate(-1deg); }
+  60% { transform: translateX(3px) rotate(1deg); }
+  100% { transform: translateX(0) rotate(0); }
+}
+
+/* ---------- 19. ROOM & ENTRANCE TRANSITIONS ---------- */
+.room-enter { animation: room-fade-in 0.28s ease-out; }
+@keyframes room-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.entrance-leaving { animation: entrance-fade-out 0.22s ease-in forwards; }
+@keyframes entrance-fade-out {
+  to { opacity: 0; }
+}
+
+.modal-panel-closing { animation: modal-sink 0.18s ease-in forwards; }
+@keyframes modal-sink {
+  to { transform: translateY(24px); opacity: 0; }
+}
+
+/* ---------- 20. DISCOVERY NOTE ---------- */
+.discovery-toast {
+  position: fixed;
+  left: var(--space-2);
+  right: var(--space-2);
+  bottom: var(--space-2);
+  max-width: calc(var(--max-width) - 2 * var(--space-2));
+  margin: 0 auto;
+  background: var(--color-wood-dark);
+  color: var(--color-paper-light);
+  border-radius: var(--radius);
+  padding: 0.9rem 1.1rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  z-index: 200;
+  cursor: pointer;
+  animation: discovery-toast-in 0.25s ease-out;
+}
+.discovery-toast p {
+  font-size: 0.92rem;
+  font-style: italic;
+}
+.discovery-toast-hiding { animation: discovery-toast-out 0.25s ease-in forwards; }
+@keyframes discovery-toast-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes discovery-toast-out {
+  to { opacity: 0; transform: translateY(12px); }
+}
+
+/* ---------- 21. DESKTOP WIDENING ---------- */
+@media (min-width: 900px) {
+  .app { padding: var(--space-4); }
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+  .entrance-scene { max-width: 380px; }
+}

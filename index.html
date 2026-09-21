@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Hailey's Library</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Literata:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<!-- If you're offline, the site still works — style.css falls back to system serif fonts. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============================================================
+     ENTRANCE — the quiet doorway into the library
+     ============================================================ -->
+<section id="view-entrance" class="view view-entrance" data-view>
+  <div class="entrance-scene" aria-hidden="true">
+    <svg viewBox="0 0 400 300" class="entrance-svg" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="doorGlow" cx="50%" cy="45%" r="65%">
+          <stop offset="0%" stop-color="#F6D9A0"/>
+          <stop offset="55%" stop-color="#D9A857"/>
+          <stop offset="100%" stop-color="#7A5230"/>
+        </radialGradient>
+        <radialGradient id="entranceLampGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#FCE7B8" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#FCE7B8" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <ellipse cx="200" cy="272" rx="120" ry="14" fill="#000" opacity="0.18"/>
+      <path d="M120 260 L120 90 Q120 40 200 40 Q280 40 280 90 L280 260 Z" fill="#402A1E"/>
+      <path d="M132 258 L132 92 Q132 54 200 54 Q268 54 268 92 L268 258 Z" fill="url(#doorGlow)"/>
+      <rect x="148" y="150" width="10" height="100" fill="#5B3A29" opacity="0.55"/>
+      <rect x="163" y="130" width="10" height="120" fill="#5B3A29" opacity="0.5"/>
+      <rect x="178" y="160" width="10" height="90" fill="#5B3A29" opacity="0.55"/>
+      <rect x="222" y="140" width="10" height="110" fill="#5B3A29" opacity="0.5"/>
+      <rect x="237" y="165" width="10" height="85" fill="#5B3A29" opacity="0.55"/>
+      <line x1="200" y1="0" x2="200" y2="40" stroke="#402A1E" stroke-width="2"/>
+      <circle class="lamp-glow-circle" cx="200" cy="46" r="34" fill="url(#entranceLampGlow)"/>
+      <circle cx="200" cy="46" r="7" fill="#F6D9A0"/>
+      <path d="M90 250 Q80 210 100 195 Q110 215 100 250 Z" fill="#3F5439" opacity="0.85"/>
+      <path d="M90 250 Q100 220 115 210 Q112 230 100 250 Z" fill="#4B6144" opacity="0.85"/>
+      <rect x="88" y="248" width="24" height="16" rx="2" fill="#5B3A29"/>
+    </svg>
+  </div>
+  <div class="entrance-content">
+    <p class="entrance-eyebrow">My Birthday Gift For You Hailey  <3 </p>
+    <h1 class="entrance-title">Hailey's Library</h1>
+    <p class="entrance-subtitle">Created by Khiano</p>
+    <button id="btn-enter" class="btn-enter" type="button">Enter the Library</button>
+  </div>
+</section>
+
+<!-- ============================================================
+     APP SHELL — everything after the entrance lives in here
+     ============================================================ -->
+<div id="app" class="app" hidden>
+
+  <!-- ---------- MAIN LIBRARY ---------- -->
+  <section id="view-main-library" class="view view-room" data-view>
+    <div class="room-illustration">
+      <svg viewBox="0 0 400 180" class="room-svg" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="mainWall" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#6B4632"/>
+            <stop offset="100%" stop-color="#5B3A29"/>
+          </linearGradient>
+          <radialGradient id="mainWindowGlow" cx="50%" cy="45%" r="60%">
+            <stop offset="0%" stop-color="#FCE7B8"/>
+            <stop offset="100%" stop-color="#D9A857"/>
+          </radialGradient>
+          <radialGradient id="mainLampGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#FCE7B8" stop-opacity="0.85"/>
+            <stop offset="100%" stop-color="#FCE7B8" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect x="0" y="0" width="400" height="180" fill="url(#mainWall)"/>
+        <rect x="0" y="150" width="400" height="30" fill="#402A1E"/>
+        <rect x="140" y="156" width="150" height="16" rx="8" fill="#8C4F49" opacity="0.7"/>
+        <g>
+          <rect x="14" y="30" width="80" height="120" fill="#402A1E"/>
+          <rect x="20" y="38" width="68" height="24" fill="#2f2018"/>
+          <rect x="20" y="70" width="68" height="24" fill="#2f2018"/>
+          <rect x="20" y="102" width="68" height="24" fill="#2f2018"/>
+          <rect x="23" y="40" width="6" height="20" fill="#A8823D"/>
+          <rect x="30" y="42" width="6" height="18" fill="#8C4F49"/>
+          <rect x="37" y="39" width="7" height="21" fill="#3F5439"/>
+          <rect x="45" y="43" width="6" height="17" fill="#A8823D"/>
+          <rect x="52" y="41" width="6" height="19" fill="#5B3A29"/>
+          <rect x="60" y="40" width="7" height="20" fill="#8C4F49"/>
+          <rect x="68" y="42" width="6" height="18" fill="#3F5439"/>
+          <rect x="75" y="39" width="6" height="21" fill="#A8823D"/>
+          <rect x="23" y="72" width="6" height="20" fill="#8C4F49"/>
+          <rect x="30" y="74" width="7" height="18" fill="#A8823D"/>
+          <rect x="38" y="71" width="6" height="21" fill="#3F5439"/>
+          <rect x="45" y="75" width="6" height="17" fill="#5B3A29"/>
+          <rect x="52" y="73" width="7" height="19" fill="#8C4F49"/>
+          <rect x="60" y="72" width="6" height="20" fill="#A8823D"/>
+          <rect x="67" y="74" width="6" height="18" fill="#3F5439"/>
+          <rect x="23" y="104" width="6" height="20" fill="#3F5439"/>
+          <rect x="30" y="106" width="6" height="18" fill="#8C4F49"/>
+          <rect x="37" y="103" width="7" height="21" fill="#A8823D"/>
+          <rect x="45" y="107" width="6" height="17" fill="#5B3A29"/>
+          <rect x="52" y="105" width="6" height="19" fill="#3F5439"/>
+          <rect x="59" y="104" width="7" height="20" fill="#8C4F49"/>
+          <rect x="67" y="106" width="6" height="18" fill="#A8823D"/>
+        </g>
+        <rect x="160" y="20" width="80" height="90" rx="4" fill="#2f2018"/>
+        <rect x="168" y="28" width="64" height="74" fill="url(#mainWindowGlow)"/>
+        <line x1="200" y1="28" x2="200" y2="102" stroke="#2f2018" stroke-width="3"/>
+        <line x1="168" y1="65" x2="232" y2="65" stroke="#2f2018" stroke-width="3"/>
+        <circle class="dust-mote dust-mote-1" cx="185" cy="55" r="2" fill="#FCE7B8" opacity="0.6"/>
+        <circle class="dust-mote dust-mote-2" cx="205" cy="85" r="1.6" fill="#FCE7B8" opacity="0.5"/>
+        <circle class="dust-mote dust-mote-3" cx="195" cy="40" r="1.4" fill="#FCE7B8" opacity="0.55"/>
+        <circle class="dust-mote dust-mote-4" cx="215" cy="70" r="1.8" fill="#FCE7B8" opacity="0.45"/>
+        <g id="main-lamp" class="tappable-object lamp-group" role="button" tabindex="0" aria-label="Turn the lamp on or off">
+          <line x1="300" y1="0" x2="300" y2="34" stroke="#2f2018" stroke-width="2"/>
+          <circle class="lamp-glow-circle" cx="300" cy="42" r="30" fill="url(#mainLampGlow)"/>
+          <path d="M288 34 L312 34 L306 46 L294 46 Z" fill="#A8823D"/>
+        </g>
+        <path class="curtain curtain-left" d="M160 20 Q150 60 160 110 L172 110 Q164 65 172 20 Z" fill="#8C4F49" opacity="0.85"/>
+        <path class="curtain curtain-right" d="M240 20 Q250 60 240 110 L228 110 Q236 65 228 20 Z" fill="#8C4F49" opacity="0.85"/>
+        <g>
+          <rect x="320" y="60" width="66" height="90" fill="#402A1E"/>
+          <rect x="326" y="66" width="54" height="22" fill="#2f2018"/>
+          <rect x="326" y="96" width="54" height="22" fill="#2f2018"/>
+          <rect x="329" y="68" width="6" height="18" fill="#3F5439"/>
+          <rect x="336" y="70" width="6" height="16" fill="#8C4F49"/>
+          <rect x="343" y="67" width="7" height="19" fill="#A8823D"/>
+          <rect x="351" y="69" width="6" height="17" fill="#5B3A29"/>
+          <rect x="358" y="68" width="6" height="18" fill="#3F5439"/>
+          <rect x="365" y="70" width="7" height="16" fill="#8C4F49"/>
+          <rect x="329" y="98" width="6" height="18" fill="#A8823D"/>
+          <rect x="336" y="100" width="6" height="16" fill="#3F5439"/>
+          <rect x="343" y="97" width="7" height="19" fill="#8C4F49"/>
+          <rect x="351" y="99" width="6" height="17" fill="#A8823D"/>
+          <rect x="358" y="98" width="6" height="18" fill="#5B3A29"/>
+        </g>
+        <g id="main-plant" class="tappable-object plant-group" role="button" tabindex="0" aria-label="Touch the plant">
+          <path d="M120 150 Q112 118 128 105 Q136 122 128 150 Z" fill="#3F5439"/>
+          <rect x="118" y="148" width="20" height="14" rx="2" fill="#402A1E"/>
+        </g>
+      </svg>
+    </div>
+
+    <header class="room-header">
+      <h2 class="room-title">Main Library</h2>
+      <p class="room-tagline">Explore wherever you like.</p>
+    </header>
+
+    <!-- special book / librarian / music player: the three named objects the master plan calls out -->
+    <div class="library-features">
+      <button id="btn-special-book" class="feature-card" type="button">
+        <svg viewBox="0 0 40 40" class="feature-icon" aria-hidden="true">
+          <rect x="8" y="6" width="24" height="30" rx="2" fill="#8C4F49"/>
+          <rect x="8" y="6" width="24" height="30" rx="2" fill="none" stroke="#402A1E" stroke-width="1.5"/>
+          <line x1="20" y1="6" x2="20" y2="36" stroke="#402A1E" stroke-width="1.5"/>
+          <rect x="18" y="4" width="4" height="18" fill="#A8823D"/>
+        </svg>
+        <span class="feature-label">For Hailey (Click me!)</span>
+      </button>
+
+      <button id="btn-librarian" class="feature-card" type="button">
+        <svg viewBox="0 0 40 40" class="feature-icon" aria-hidden="true">
+          <circle cx="20" cy="20" r="18" fill="#A8823D" opacity="0.22"/>
+          <circle cx="20" cy="15" r="7" fill="#5B3A29"/>
+          <path d="M8 34 Q8 22 20 22 Q32 22 32 34 Z" fill="#5B3A29"/>
+        </svg>
+        <span class="feature-label">Ask the Librarian</span>
+      </button>
+
+      <button id="btn-music-player" class="feature-card" type="button">
+        <svg viewBox="0 0 40 40" class="feature-icon" aria-hidden="true">
+          <circle cx="20" cy="20" r="18" fill="#3F5439" opacity="0.18"/>
+          <circle cx="20" cy="20" r="13" fill="#241C15"/>
+          <circle cx="20" cy="20" r="5" fill="#A8823D"/>
+          <circle cx="20" cy="20" r="1.6" fill="#241C15"/>
+        </svg>
+        <span class="feature-label">Music</span>
+      </button>
+    </div>
+
+    <!-- shelves are generated here by script.js from the `library` data -->
+    <div id="shelves-container" class="shelves-container"></div>
+
+    <!-- doors to the other two areas -->
+    <nav class="room-doors">
+      <button id="btn-go-reading-room" class="door-button" type="button">Reading Room →</button>
+      <button id="btn-go-gallery" class="door-button" type="button">Gallery →</button>
+    </nav>
+
+    <button id="btn-creator-plaque" class="creator-plaque" type="button"> Gift for Hailey · Created by Khiano Sigma · Established Sept 2026</button>
+  </section>
+  
+    <!-- ---------- READING ROOM ---------- -->
+  <section id="view-reading-room" class="view view-room" data-view hidden>
+    <div class="room-illustration">
+      <svg viewBox="0 0 400 180" class="room-svg" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="readingSky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1F2740"/>
+            <stop offset="100%" stop-color="#2E3B5C"/>
+          </linearGradient>
+          <radialGradient id="readingLamp" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#FCE7B8" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#FCE7B8" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect x="0" y="0" width="400" height="180" fill="#1B1712"/>
+        <rect x="230" y="14" width="140" height="120" rx="6" fill="url(#readingSky)"/>
+        <line x1="300" y1="14" x2="300" y2="134" stroke="#1B1712" stroke-width="3"/>
+        <line x1="230" y1="74" x2="370" y2="74" stroke="#1B1712" stroke-width="3"/>
+        <circle cx="250" cy="35" r="1.4" fill="#F1E9DA"/>
+        <circle cx="330" cy="28" r="1.2" fill="#F1E9DA"/>
+        <circle cx="350" cy="55" r="1.6" fill="#F1E9DA"/>
+        <circle cx="265" cy="60" r="1.2" fill="#F1E9DA"/>
+        <line class="rain-line" x1="245" y1="90" x2="238" y2="110" stroke="#7C8AB0" stroke-width="1.5" opacity="0.6"/>
+        <line class="rain-line" x1="270" y1="95" x2="263" y2="115" stroke="#7C8AB0" stroke-width="1.5" opacity="0.6"/>
+        <line class="rain-line" x1="320" y1="88" x2="313" y2="108" stroke="#7C8AB0" stroke-width="1.5" opacity="0.6"/>
+        <line class="rain-line" x1="345" y1="98" x2="338" y2="118" stroke="#7C8AB0" stroke-width="1.5" opacity="0.6"/>
+        <rect x="0" y="150" width="400" height="30" fill="#241C15"/>
+        <path d="M60 150 L60 108 Q60 96 76 96 L124 96 Q140 96 140 108 L140 150 Z" fill="#5B3A29"/>
+        <rect x="52" y="140" width="96" height="14" rx="6" fill="#402A1E"/>
+        <rect x="68" y="112" width="64" height="30" rx="8" fill="#6B4632"/>
+        <rect x="160" y="130" width="34" height="8" fill="#402A1E"/>
+        <g id="reading-lamp" class="tappable-object lamp-group" role="button" tabindex="0" aria-label="Turn the lamp on or off">
+          <rect x="174" y="90" width="4" height="40" fill="#2f2018"/>
+          <circle class="lamp-glow-circle" cx="176" cy="82" r="26" fill="url(#readingLamp)"/>
+          <path d="M164 78 L188 78 L182 92 L170 92 Z" fill="#D9A857"/>
+        </g>
+        <g id="reading-books" class="tappable-object" role="button" tabindex="0" aria-label="Look closer at the books">
+          <rect x="160" y="122" width="22" height="6" fill="#8C4F49"/>
+          <rect x="162" y="116" width="18" height="6" fill="#3F5439"/>
+        </g>
+      </svg>
+    </div>
+    <header class="room-header">
+      <button class="door-button door-button-back" data-go="main-library" type="button">← Main Library</button>
+      <h2 class="room-title">Reading Room</h2>
+      <p class="room-tagline" >You can comeback here in your library whenever you want po.</p>
+    </header>
+    <div id="reading-room-container" class="reading-room-container"></div>
+  </section>
+
+  <!-- ---------- GALLERY ---------- -->
+  <section id="view-gallery" class="view view-room" data-view hidden>
+    <div class="room-illustration">
+      <svg viewBox="0 0 400 180" class="room-svg" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="galleryWall" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#E3DCCB"/>
+            <stop offset="100%" stop-color="#D6CDB6"/>
+          </linearGradient>
+          <radialGradient id="gallerySpot" cx="50%" cy="0%" r="80%">
+            <stop offset="0%" stop-color="#FFF7E0" stop-opacity="0.85"/>
+            <stop offset="100%" stop-color="#FFF7E0" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect x="0" y="0" width="400" height="180" fill="url(#galleryWall)"/>
+        <rect x="0" y="150" width="400" height="30" fill="#B7AC90"/>
+        <ellipse class="spotlight-glow" cx="90" cy="10" rx="60" ry="50" fill="url(#gallerySpot)"/>
+        <ellipse class="spotlight-glow" cx="200" cy="10" rx="70" ry="55" fill="url(#gallerySpot)"/>
+        <ellipse class="spotlight-glow" cx="315" cy="10" rx="60" ry="50" fill="url(#gallerySpot)"/>
+        <rect x="55" y="35" width="70" height="90" fill="#F1E9DA" stroke="#A8823D" stroke-width="6"/>
+        <rect x="165" y="20" width="90" height="110" fill="#F1E9DA" stroke="#A8823D" stroke-width="7"/>
+        <rect x="285" y="40" width="65" height="85" fill="#F1E9DA" stroke="#A8823D" stroke-width="6"/>
+        <g id="gallery-bench" class="tappable-object" role="button" tabindex="0" aria-label="Look closer at the bench">
+          <rect x="170" y="150" width="80" height="10" rx="3" fill="#5B3A29"/>
+          <rect x="180" y="160" width="8" height="16" fill="#402A1E"/>
+          <rect x="232" y="160" width="8" height="16" fill="#402A1E"/>
+        </g>
+      </svg>
+    </div>
+    <header class="room-header">
+      <button class="door-button door-button-back" data-go="main-library" type="button">← Main Library</button>
+      <h2 class="room-title">Gallery</h2>
+      <p class="room-tagline">A museum where the subject of the art is you.</p>
+    </header>
+    <div id="gallery-container" class="gallery-container"></div>
+  </section>
+
+  <!-- ---------- LETTER MODAL (shelves + reading room open into this) ---------- -->
+  <div id="modal-letter" class="modal" hidden>
+    <div class="modal-backdrop" data-close="letter"></div>
+    <div class="modal-panel letter-panel" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="letter-title">
+      <button class="modal-close" data-close="letter" type="button" aria-label="Close letter">✕</button>
+      <p id="letter-title" class="letter-title"></p>
+      <div id="letter-image-wrap" class="letter-image-wrap" hidden>
+        <img id="letter-image" class="letter-image" alt="" loading="lazy">
+      </div>
+      <p id="letter-message" class="letter-message"></p>
+      <div class="letter-nav">
+        <button id="btn-letter-prev" class="letter-nav-btn" type="button">← Previous</button>
+        <button id="btn-letter-next" class="letter-nav-btn" type="button">Next →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ---------- SPECIAL BOOK MODAL ---------- -->
+  <div id="modal-book" class="modal" hidden>
+    <div class="modal-backdrop" data-close="book"></div>
+    <div class="modal-panel letter-panel" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="book-title">
+      <button class="modal-close" data-close="book" type="button" aria-label="Close book">✕</button>
+      <p id="book-title" class="letter-title"></p>
+      <p id="book-message" class="letter-message"></p>
+    </div>
+  </div>
+
+  <!-- ---------- LIBRARIAN PANEL ---------- -->
+  <div id="modal-librarian" class="modal" hidden>
+    <div class="modal-backdrop" data-close="librarian"></div>
+    <div class="modal-panel librarian-panel" tabindex="-1" role="dialog" aria-modal="true" aria-label="Librarian">
+      <button class="modal-close" data-close="librarian" type="button" aria-label="Close">✕</button>
+      <p id="librarian-text" class="librarian-text"></p>
+      <div id="librarian-prompts" class="librarian-prompts"></div>
+    </div>
+  </div>
+
+  <!-- ---------- MUSIC PLAYER PANEL ---------- -->
+   <div id="modal-music" class="modal" hidden>
+    <div class="modal-backdrop" data-close="music"></div>
+    <div class="modal-panel music-panel" tabindex="-1" role="dialog" aria-modal="true" aria-label="Music player">
+      <button class="modal-close" data-close="music" type="button" aria-label="Close">✕</button>
+
+      <p id="music-empty" class="music-empty" hidden>No songs yet — add some in script.js when you're ready.</p>
+
+      <div id="music-player-ui" class="music-player-ui" hidden>
+        <p id="music-track-title" class="music-track-title"></p>
+        <p id="music-track-artist" class="music-track-artist"></p>
+
+        <div id="music-mood-chips" class="music-mood-chips"></div>
+
+        <div class="music-controls">
+          <button id="btn-music-prev" class="music-control-btn" type="button" aria-label="Previous song">⏮</button>
+          <button id="btn-music-playpause" class="music-control-btn music-control-btn-main" type="button" aria-label="Play">▶</button>
+          <button id="btn-music-next" class="music-control-btn" type="button" aria-label="Next song">⏭</button>
+        </div>
+
+        <div class="music-volume-row">
+          <button id="btn-music-mute" class="music-mute-btn" type="button" aria-label="Mute">🔊</button>
+          <input id="music-volume" class="music-volume-slider" type="range" min="0" max="1" step="0.01" aria-label="Volume">
+        </div>
+
+        <p id="music-error" class="music-error" hidden>That song's file couldn't be found — double check the path in script.js.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ---------- ENLARGED PHOTO (Gallery opens into this) ---------- -->
+  <div id="modal-photo" class="modal" hidden>
+    <div class="modal-backdrop" data-close="photo"></div>
+    <div class="modal-panel photo-panel" tabindex="-1" role="dialog" aria-modal="true" aria-label="Photo">
+      <button class="modal-close" data-close="photo" type="button" aria-label="Close photo">✕</button>
+      <img id="photo-image" class="photo-image" alt="" loading="lazy">
+      <p id="photo-caption" class="photo-caption"></p>
+    </div>
+  </div>
+
+  <!-- ---------- DISCOVERY NOTE (small optional details around the library) ---------- -->
+  <div id="discovery-toast" class="discovery-toast" hidden role="status">
+    <p id="discovery-toast-text"></p>
+  </div>
+
+  <!-- the one audio element for the whole site — it lives outside every
+       room/modal so playback never restarts when you navigate -->
+  <audio id="audio-player" preload="none"></audio>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+ 
